@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li .task-text {
+  flex-grow: 1;
+}
+
+li .button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.task-text {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.buttons {
+  display: flex;
+}
+
+.completed {
+  border: none;
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+
+.done-button,
+.delete-button,
+.edit-button {
+  background-color: lightblue;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: #e57373;
+}
+.edit-button {
+  background-color: navy;
+  color: white;
+  /* border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer; */
+}
+
+@media (max-width: 767px) {
+  li {
+    grid-template-columns: 40px auto 60px; /* adjust column widths for mobile screens */
+    padding: 5px; /* reduce padding for mobile screens */
+  }
+
+  .done-button,
+  .delete-button,
+  .edit-button {
+    padding: 3px 8px; /* reduce button padding for mobile screens */
+    font-size: 14px; /* reduce font size for mobile screens */
+  }
+
+  .task-text {
+    font-size: 16px; /* adjust font size for mobile screens */
+  }
+}
