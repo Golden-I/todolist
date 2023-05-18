@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import TodoForm from "./componenet/TodoForm";
+import TodoItems from "./componenet/TodoItems";
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
@@ -52,55 +54,20 @@ function TodoList() {
   return (
     <div className="App">
       <h1>Todo List</h1>
-      <form
-        onSubmit={editingIndex !== null ? handleUpdateTodo : handleFormSubmit}
-      >
-        <input
-          type="text"
-          placeholder={editingIndex !== null ? "Update task" : "Enter a task"}
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        <button type="submit">
-          {editingIndex !== null ? "Update" : "Add"}
-        </button>
-      </form>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>
-            <span
-              className={todo.completed ? "completed" : ""}
-              onClick={() => handleToggleTodo(index)}
-            >
-              {todo.text}
-            </span>
-            <div className="buttons-container">
-              {!todo.completed && editingIndex !== index && (
-                <button
-                  className="edit-button"
-                  onClick={() => handleEditTodo(index)}
-                >
-                  Edit
-                </button>
-              )}
-              {!todo.completed && (
-                <button
-                  className="done-button"
-                  onClick={() => handleToggleTodo(index)}
-                >
-                  Done
-                </button>
-              )}
-              <button
-                className="delete-button"
-                onClick={() => handleDeleteTodo(index)}
-              >
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <TodoForm
+        editingIndex={editingIndex}
+        inputValue={inputValue}
+        handleInputChange={handleInputChange}
+        handleFormSubmit={handleFormSubmit}
+        handleUpdateTodo={handleUpdateTodo}
+      />
+      <TodoItems
+        todos={todos}
+        editingIndex={editingIndex}
+        handleToggleTodo={handleToggleTodo}
+        handleDeleteTodo={handleDeleteTodo}
+        handleEditTodo={handleEditTodo}
+      />
     </div>
   );
 }
